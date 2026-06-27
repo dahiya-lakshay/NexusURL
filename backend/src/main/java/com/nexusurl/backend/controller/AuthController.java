@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nexusurl.backend.dto.AuthResponse;
+import com.nexusurl.backend.dto.LoginRequest;
 import com.nexusurl.backend.dto.RegisterRequest;
 import com.nexusurl.backend.service.AuthService;
 
@@ -27,5 +28,12 @@ public class AuthController {
             @Valid @RequestBody RegisterRequest request
     ) {
         return ResponseEntity.ok(authService.register(request));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(
+            @Valid @RequestBody LoginRequest request
+    ) {
+        return ResponseEntity.ok(authService.login(request));
     }
 }
